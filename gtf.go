@@ -89,6 +89,10 @@ var GtfFuncMap = template.FuncMap{
 
 		return url.QueryEscape(s)
 	},
+	"add": func(x, y int) int {
+		defer recovery()
+		return x + y
+	},
 	"wordcount": func(s string) int {
 		defer recovery()
 
