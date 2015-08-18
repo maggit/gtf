@@ -89,7 +89,7 @@ var GtfFuncMap = template.FuncMap{
 
 		return url.QueryEscape(s)
 	},
-	"add": func(arg interface{}, value interface{}) bool {
+	"addvalue": func(arg interface{}, value interface{}) int {
 		defer recovery()
 
 		var v float64
@@ -100,8 +100,6 @@ var GtfFuncMap = template.FuncMap{
 			v = float64(reflect.ValueOf(value).Uint())
 		case float32, float64:
 			v = reflect.ValueOf(value).Float()
-		default:
-			return false
 		}
 
 		var a float64
@@ -112,8 +110,6 @@ var GtfFuncMap = template.FuncMap{
 			a = float64(reflect.ValueOf(arg).Uint())
 		case float32, float64:
 			a = reflect.ValueOf(arg).Float()
-		default:
-			return false
 		}
 
 		return v + a
